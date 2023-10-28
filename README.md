@@ -1,5 +1,5 @@
 # Hex-Gradient-PHP
-A PHP adaptation of the original Python program.
+A PHP adaptation of the original Python program (https://github.com/Haikoseu/Hex-Gradient-PY).
 
 With this tool, you can generate a color gradient in hexadecimal code, for which you can choose the arrival and departure colors, as well as the length.
 
