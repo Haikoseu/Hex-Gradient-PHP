@@ -8,16 +8,13 @@
         function exportToJson() {
 			var colors = [];
 			document.querySelectorAll('.color-box').forEach(function(box) {
-				var colorCode = box.innerText.trim();
-				if (colorCode.startsWith("#")) {
-					colorCode = colorCode.substring(1);
-				}
+				var colorCode = box.innerText.trim().match(/[0-9a-fA-F]{6}/)[0];
 				colors.push(colorCode);
 			});
 			var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(colors));
 			var downloadAnchor = document.createElement('a');
 			downloadAnchor.setAttribute("href", dataStr);
-			downloadAnchor.setAttribute("download", "gradient.json");
+			downloadAnchor.setAttribute("download", "hex-gradient.json");
 			document.body.appendChild(downloadAnchor);
 			downloadAnchor.click();
 			downloadAnchor.remove();
