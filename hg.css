@@ -50,6 +50,10 @@
 	.color-box {
 		padding: 20px 0;
 	}
+
+	#numColors {
+		width: 200px;
+	}
 }
 
 @media only screen and (min-device-width: 701px) {
@@ -100,6 +104,10 @@
 	
 	form div {
 		height: 35px;
+	}
+
+	#numColors {
+		width: 70px;
 	}
 }
 
