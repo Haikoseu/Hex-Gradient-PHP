@@ -1,7 +1,8 @@
 # Hex-Gradient-PHP
 A PHP adaptation of the original Python program.
 
-With this tool, you can generate a color gradient in hexadecimal code, for which you can choose the arrival and departure colors, as well as the length.
+With this tool, you can generate a color gradient in hexadecimal code, for which you can
+choose the arrival and departure colors, as well as the length.
 
 You are free to make your own CSS to make it as pretty as possible.
 
