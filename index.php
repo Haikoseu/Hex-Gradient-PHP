@@ -33,7 +33,27 @@
             }
 
             document.body.removeChild(textarea);
-        }
+		}
+
+		function updateDisplayGradient(startingColor, endingColor, numColors) {
+			var gradientString = `linear-gradient( to right, ${startingColor}, ${endingColor})`;
+			document.getElementById("display").style.backgroundImage = gradientString;
+
+			localStorage.setItem(`startingColor`, `${startingColor}`);
+			localStorage.setItem(`endingColor`, `${endingColor}`);
+			localStorage.setItem(`numColors`, `${numColors}`);
+		}
+
+		function loadColors() {
+			var startingColor = localStorage.getItem('startingColor');
+			var endingColor = localStorage.getItem('endingColor');
+			var numColors = localStorage.getItem('numColors');
+
+			document.getElementById('startingColor').value = startingColor;
+			document.getElementById('endingColor').value = endingColor;
+			document.getElementById('numColors').value = numColors;
+		}
+		window.onload = loadColors;
     </script>
 </head>
 <body>
@@ -42,24 +62,27 @@
 		<form method="post">
 			<div>
 				<label for="startingColor">Starting Color:</label>
-				<input type="color" id="startingColor" name="startingColor" value="#0080ff">
+				<input type="color" id="startingColor" name="startingColor">
 			</div>
 
 			<div>
 				<label for="endingColor">Ending Color:</label>
-				<input type="color" id="endingColor" name="endingColor" value="#00ff00">
+				<input type="color" id="endingColor" name="endingColor">
 			</div>
 
 			<div>
 				<label for="numColors">Number of Colors:</label>
-				<input type="number" id="numColors" name="numColors" value="5" min="3" max="200">
+				<input type="number" id="numColors" name="numColors" min="3" max="200">
 			</div>
 
 			<div class="buttons">
-				<input type="submit" name="submit" value="Generate Gradient">
+				<input type="submit" id="generateButton" name="submit" value="Generate Gradient">
 				<button type="button" id="exportJSON" onclick="exportToJson()">Export to JSON</button>
 			</div>
 		</form>
+	</div>
+	<div class="displayZone bloc">
+		<div id="display"></div>
 	</div>
 	<div class="hex-gradient bloc">
 		<?php
@@ -125,6 +148,7 @@
 						  </div>";
 					$counter++;
 				}
+				echo "<script>updateDisplayGradient(\"#{$startingColor}\", \"#{$endingColor}\", \"{$numColors}\")</script>";
 			}
 		}
 		?>
